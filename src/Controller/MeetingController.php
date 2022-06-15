@@ -28,7 +28,7 @@ class MeetingController extends AbstractController
         );
 
         return $this->render('meeting/showAll.html.twig', [
-            'meetings' => $meetings, 'paginator' => true
+            'meetings' => $meetings
         ]);
     }
 
@@ -85,7 +85,7 @@ class MeetingController extends AbstractController
 
     }
 
-    #[Route('/rendez-vous/recherche', name:'app_meeting_search', methods:['POST'])]
+    #[Route('/rendez-vous/recherche', name:'app_meeting_search', methods:['GET'])]
     public function search(Request $request, MeetingRepository $meetingManager, PaginatorInterface $paginator){
         $acceptedFilter = ['meetingName', 'meetingPlace', 'meetingStartDate', 'meetingEndDate', 'meetingPriority'];
         
@@ -93,7 +93,7 @@ class MeetingController extends AbstractController
 
         $searchParameters = [];
 
-        foreach($request->request->all() as $key => $params){
+        foreach($request->query->all() as $key => $params){
             if(in_array($key,$acceptedFilter)){
                 $searchParameters[$key] = $params; 
                 if($params !== ""){
@@ -105,12 +105,24 @@ class MeetingController extends AbstractController
         if(!$validSearchRequest){
             $getAllMeetings = $meetingManager->findAll();
 
-        return new JsonResponse(['content' => $this->renderView('meeting/meetingContent.html.twig', ['meetings' => $getAllMeetings, 'paginator' => false])]);
+            $meetings = $paginator->paginate(
+                $getAllMeetings, // Requête contenant les données à paginer (ici nos articles)
+                $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+                10 // Nombre de résultats par page
+            );
+
+            return new JsonResponse(['content' => $this->renderView('meeting/meetingContent.html.twig', ['meetings' => $meetings])]);
         }
 
         $result = $meetingManager->searchMeetingByFilter($searchParameters);
 
-        return new JsonResponse(['content' => $this->renderView('meeting/meetingContent.html.twig', ['meetings' => $result, 'paginator' => false])]);
+        $meetings = $paginator->paginate(
+            $result, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            10 // Nombre de résultats par page
+        );
+
+        return new JsonResponse(['content' => $this->renderView('meeting/meetingContent.html.twig', ['meetings' => $meetings])]);
 
     }
 }
