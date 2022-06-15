@@ -1,0 +1,14 @@
+{% for meeting in meetings %}
+   <li>
+        <p>{{meeting.name}}</p>
+        <p>{{meeting.place}}</p>
+        <p>{{meeting.startDate|format_datetime(locale='fr')}}</p>
+        <p>{{meeting.endDate|format_datetime(locale='fr')}}</p>
+        <p>{{meeting.priority}}</p>
+        <a href="{{path('app_meeting_edit', {'id' : meeting.id})}}">Editer</a>
+        <a href="{{path('app_meeting_delete', {'id' : meeting.id})}}" class='btn btn-delete'>Supprimer</a>
+   </li> 
+{% endfor %}
+{% if paginator %}
+{{ knp_pagination_render(meetings) }}
+{% endif %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout de rendez vous{% endblock %}
+
+{% block body %}
+
+{{ form_start(form, {'attr' : {'class' : 'meetingForm'}}) }}
+{{form_widget(form.name, {'attr' : {'placeholder': 'Nom'}})}}
+{{form_widget(form.place, {'attr' : {'placeholder': 'Lieu'}})}}
+<div>
+{{form_label(form.startDate, 'Date de début')}}
+{{form_widget(form.startDate)}}
+</div>
+<div>
+{{form_label(form.endDate, 'Date de fin')}}
+{{form_widget(form.endDate)}}
+</div>
+<div>
+{{form_label(form.priority, 'Priorité ( de 0 à 3 )')}}
+{{form_widget(form.priority)}}
+</div>
+<input type="submit" value="Enregistrer">
+{{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création de tâche{% endblock %}
+
+{% block body %}
+
+{{ form_start(form, {'attr' : {'class' : 'form'}}) }}
+{{form_widget(form.title, {'attr' :{'placeholder' : "Titre de la tâche"} }) }}
+<div>
+{{form_label(form.done, 'Fait : ') }}
+{{form_widget(form.done)}}
+</div>
+<button type="submit" class='submitForm'>Enregistrer</button>
+{{ form_end(form) }}
+
+{% endblock %}

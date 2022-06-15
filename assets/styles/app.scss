@@ -1,0 +1,238 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Poiret';
+    src: url('../../public/fonts/PoiretOne-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Hind';
+    src: url('../../public/fonts/HindMadurai-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'AnticSlab';
+    src: url('../../public/fonts/AnticSlab-Regular.ttf');
+}
+
+h1{
+    font-family: 'Poiret';
+}
+
+h2,h3{
+    font-family: 'AnticSlab';
+}
+
+p,a,li{
+    font-family: 'Hind';
+}
+
+body{
+    background-color: rgb(228, 228, 228);
+}
+
+nav{
+    text-align: center;
+    padding: 1em;
+    background-color: rgb(141, 141, 141);
+    a{
+        text-decoration: none;
+        color: white;
+        font-size: 26px;
+        font-family: 'Hind';
+    }
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn{
+    display: block;
+    margin: auto;
+    padding: 5px 1px;
+    background-color: white;
+    width: 15%;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin-top: 1em;
+    border-radius: 5px;
+    transition: all ease-in-out 0.2ms;
+    &:hover{
+        transform: translateY(-2%);
+        box-shadow: 0px 2px 4px black;
+    }
+}
+
+
+
+.taskListsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:50%;
+    margin:1em auto;
+    padding: 2em 1em;
+    p,a{
+        display: block;
+        width: 33%;
+    }
+    background-color: white;
+    border-radius: 5px;
+    border-bottom: rgb(63, 63, 63) solid 2px;
+    .btn-details{
+        display: block;
+        margin: auto;
+        padding: 5px 1px;
+        background-color: rgb(190, 190, 190);
+        text-align: center;
+        text-decoration: none;
+        width: 15%;
+        color: black;
+        border-radius: 5px;
+        transition: all ease-in-out 0.2ms;
+        &:hover{
+            transform: translateY(-2%);
+            box-shadow: 0px 2px 4px black;
+        }
+    }
+    button{
+        font-family: 'Hind';
+        padding:5px 7px;
+        background-color: rgb(188, 0, 0);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        transition: all ease-in-out 0.2ms;
+        &:hover{
+            transform: translateY(-2%);
+            box-shadow: 0px 2px 4px black;
+        }
+    }
+}
+
+h2,h3{
+    text-align: center;
+    margin-top: 1em;
+}
+
+.taskListAction{
+    display: flex;
+    width: 25%;
+    margin:1em auto;
+    justify-content: space-evenly;
+    align-items: center;
+    .btn{
+        width: 40%;
+    }
+}
+
+.tasksContainer{
+    width: 35%;
+    margin: auto;
+    li{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10%;
+        padding: 1em;
+        background-color: white;
+        border-radius: 5px;
+        border-bottom: rgb(63, 63, 63) solid 2px;
+        margin: 1em auto;
+    }
+    div{
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+    .btn-edit{
+        display: block;
+        padding: 5px 1px;
+        background-color: rgb(190, 190, 190);
+        text-align: center;
+        text-decoration: none;
+        width: 15%;
+        color: black;
+        border-radius: 5px;
+        transition: all ease-in-out 0.2ms;
+        &:hover{
+            transform: translateY(-2%);
+            box-shadow: 0px 2px 4px black;
+        }
+    }
+}
+
+.btn.btn-delete{
+    color: red;
+}
+
+.form{
+    width: 35%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
+    input{
+        width: 50%;
+        margin: auto;
+        text-align: center;
+    }
+    .submitForm{
+        width: 20%;
+        margin: auto;
+    }
+    div{
+        width: 20%;
+        margin: auto;
+    }
+}
+
+.listOfMeetings{
+    margin: 2em auto;
+    text-align: center;
+    li{
+        margin: 1em;
+        list-style: none;
+    }
+}
+
+#searchContainer{
+    margin: 2em auto;
+    text-align: center;
+    h3{
+        margin-bottom: 1em;
+    }
+}
+
+.meetingForm{
+    width: 35%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
+    input{
+        width: 50%;
+        margin: auto;
+        text-align: center;
+    }
+    .submitForm{
+        width: 20%;
+        margin: auto;
+    }
+    div{
+        margin: auto;
+        text-align: center;
+    }
+}
+
+.error{
+    text-align: center;
+    color: red;
+    margin: 0.5em auto;
+}

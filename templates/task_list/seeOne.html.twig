@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Détails{% endblock %}
+
+{% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('ajaxDoneChange') }}
+{% endblock %}
+
+{% block body %}
+<h2>{{ taskList.name }}</h1>
+<div class='taskListAction'>
+<a href="{{path('app_taskList_edit', {'id' : taskList.id})}}" class='btn'>Editer</a>
+<a href="{{path('app_task_create', {'id' : taskList.id})}}" class='btn'>Ajouter une tâche</a>
+</div>
+
+<h3>Listes des tâches </h3>
+
+<ul class='tasksContainer'>
+{% for task in taskList.tasks %}
+    <li>
+        <p>{{task.title}}</p>
+        <a href="{{path('app_task_edit', {'id' : task.id})}}" class='btn-edit'>Editer</a>
+        <div><p>Fait :  </p><input id={{ task.id }} type="checkbox" name="done" {% if task.done == 1 %}checked{% endif %}></div>
+    </li>
+{% endfor %}
+</ul>
+
+<a href="{{path('app_task_delete', {'id' : taskList.id})}}" class='btn btn-delete'>Supprimer tâches effectuées</a>
+{% endblock %}

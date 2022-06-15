@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création de liste de tâche{% endblock %}
+
+{% block body %}
+
+{{ form_start(form, {'attr' : {'class' : 'form'}}) }}
+{{form_widget(form.name, {'attr' :{'placeholder' : "Nom de la liste"} })}}
+<button type="submit" class='submitForm'>Enregistrer</button>
+{{ form_end(form) }}
+
+{% endblock %}

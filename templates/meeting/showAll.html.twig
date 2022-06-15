@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tout vos rendez-vous{% endblock %}
+{% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('ajaxMeeting') }}
+{% endblock %}
+{% block body %}
+
+{% for error in app.session.flashbag.get('error') %}
+            <p class="error">{{ error }}</p>
+{% endfor %}
+
+<a href="{{path('app_meeting_add')}}" class='btn'>Créer un rendez-vous</a>
+<div id='searchContainer'>
+<h3>Chercher un rendez-vous :</h3>
+<form action="{{path('app_meeting_search')}}" method='POST' id='searchForm'>
+<input type="text" name="meetingName" placeholder='Par nom'>
+<input type="text" name="meetingPlace" placeholder='Par lieu'>
+<label for="meetingStartDate">Par date de début</label>
+<input type="datetime-local" step="1" name="meetingStartDate">
+<label for="meetingEndDate">Par date de fin</label>
+<input type="datetime-local" name="meetingEndDate">
+<label for="meetingPriority">Par priorité</label>
+<input type="number" max='3' min='0' name='meetingPriority'>
+<input type="submit" value="Chercher" id='searchBtn'>
+</form>
+</div>
+
+<ul class='listOfMeetings'>
+{% include "meeting/meetingContent.html.twig" %}
+</ul>
+
+{% endblock %}
